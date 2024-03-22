@@ -12,6 +12,7 @@
     <div class="signup-container">
         <form class="signup-form" method="post" action="{% url 'signup' %}">
             {% csrf_token %}
+            <img class="form-img" src="{% static 'images/logo.png' %}" alt="Logo" width="100" height="100">
             <h2>Sign Up</h2>
             <div class="form-group">
                 {{ form.username.label_tag }}

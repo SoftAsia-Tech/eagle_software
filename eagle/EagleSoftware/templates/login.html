@@ -9,33 +9,36 @@
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
 </head>
-<!-- <body>
-    <div class="login-form">
-        <form method="post">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit">Login</button>
-        </form>
-        {% if error_message %}
-            <p>{{ error_message }}</p>
-        {% endif %}
-    </div>
-</body> -->
 <body>
     <div class="login-container">
         <form class="login-form" method="post" action="{% url 'login' %}">
             {% csrf_token %}
+            <!-- <img class="login-img" src="/EagleSoftware/static/images/logo.jpeg"> -->
+            <img class="form-img" src="{% static 'images/logo.png' %}" alt="Logo" width="100" height="100">
             <h2>Sign in</h2>
             <!-- <h2>Log in with your Eagle Software account to
                 continue</h2> -->
             <div class="form-group">
                 {{ form.username.label_tag }}
+                <br>
                 {{ form.username }}
             </div>
             
             <div class="form-group">
                 {{ form.password.label_tag }}
+                <br>
                 {{ form.password }}
+            </div>
+            <div class="form-group">
+                <div class="form-inline">
+                    <div>
+                        {{ form.remember_me }}
+                        <label for="id_remember_me">Remember me</label>
+                    </div>                    
+                    <div class="">
+                        <a href="">Recover Password</a>
+                    </div>
+                </div>
             </div>
             
             <button type="submit" class="btn-login">Login</button>

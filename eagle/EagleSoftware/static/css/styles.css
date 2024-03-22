@@ -1,3 +1,12 @@
+.form-img{
+  text-align: center;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
+}
+
+
 /* Login */
 
 /* Reset default margin and padding */
@@ -21,12 +30,19 @@ body {
 }
 
 .login-form {
-  width: 500px;
+  /* width: 500px; */
+  width: 35%; /* Set the width to 60% of the screen */
+  /* Add any additional styling as needed */
+  margin: 0 auto; /* Center the form horizontally */
+  /*height: 50vh;  Set the height to 50% of the viewport height */
+  /* Add any additional styling as needed */
   background-color: #ffffff;
   padding: 30px;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
+
+
 
 .login-form h2 {
   margin-bottom: 20px;
@@ -37,23 +53,36 @@ body {
   margin-bottom: 20px;
 }
 
-.form-group label {
-  display: block;
-  font-weight: bold;
+/* .form-group label {
+  display: inline-block;
+  /* vertical-align: middle; 
+  font-weight: normal;
+} */
+
+/* .form-group input[type="checkbox"] {
+  display: inline-block;
+  vertical-align: middle; 
 }
 
-.form-group input {
+.form-group a {
+  display: inline-block;
+  vertical-align: middle; 
+} */
+
+/* .form-group input {
   width: 100%;
-  padding: 10px;
+  padding: 20px;
   border: 1px solid #ccc;
   border-radius: 5px;
-}
+  color: rgb(59, 59, 59);
+} */
 
 .btn-login {
   width: 100%;
-  padding: 10px;
+  padding: 18px;
   background-color: #007bff;
   color: #ffffff;
+  font-size: 18px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -62,6 +91,26 @@ body {
 .btn-login:hover {
   background-color: #0056b3;
 }
+
+.form-inline {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* .email-icon {
+  padding-right: 30px; 
+  background-image: url("{% static 'images/' %}"); 
+  background-repeat: no-repeat;
+  background-position: right center; 
+}
+
+.password-icon {
+  padding-right: 30px; 
+  background-image: url("{% static 'images/' %}"); 
+  background-repeat: no-repeat;
+  background-position: right center; 
+} */
+
 
 
 /* Signup */
@@ -105,19 +154,20 @@ body {
 
 .form-group label {
   display: block;
-  font-weight: bold;
+  font-weight: normal;
 }
 
 .form-group input {
   width: 100%;
-  padding: 10px;
+  padding: 18px;
   border: 1px solid #ccc;
   border-radius: 5px;
 }
 
 .btn-signup {
   width: 100%;
-  padding: 10px;
+  padding: 18px;
+  font-size: 18px;
   background-color: #007bff;
   color: #ffffff;
   border: none;
