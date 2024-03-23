@@ -8,45 +8,123 @@
     <!-- Link to your CSS file -->
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
-</head>
-<body>
-    <div class="login-container">
-        <form class="login-form" method="post" action="{% url 'login' %}">
-            {% csrf_token %}
-            <!-- <img class="login-img" src="/EagleSoftware/static/images/logo.jpeg"> -->
-            <img class="form-img" src="{% static 'images/logo.png' %}" alt="Logo" width="100" height="100">
-            <h2>Sign in</h2>
-            <!-- <h2>Log in with your Eagle Software account to
-                continue</h2> -->
-            <div class="form-group">
-                {{ form.username.label_tag }}
-                <br>
-                {{ form.username }}
-            </div>
-            
-            <div class="form-group">
-                {{ form.password.label_tag }}
-                <br>
-                {{ form.password }}
-            </div>
-            <div class="form-group">
-                <div class="form-inline">
-                    <div>
-                        {{ form.remember_me }}
-                        <label for="id_remember_me">Remember me</label>
-                    </div>                    
-                    <div class="">
-                        <a href="">Recover Password</a>
-                    </div>
-                </div>
-            </div>
-            
-            <button type="submit" class="btn-login">Login</button>
-            {% if error_message %}
-            <p>{{ error_message }}</p>
-            {% endif %}
-        </form>
 
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+    
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+    
+        .login-form {
+            width: 50%;
+            margin: 50px;
+            /* text-align: center; */
+        }
+    
+        .login-form h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+    
+        /* .login-form form {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        } */
+    
+        .login-form input[type="text"],
+        .login-form input[type="password"] {
+            width: 100%;
+            padding: 25px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+    
+        .login-form input[type="submit"] {
+            width: 100%;
+            background: #F26226;
+            color: #fff;
+            padding: 18px;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .login-image {
+            width: 50%;
+            height: 100vh;
+            background: url("{% static 'images/signup-img.jpg' %}");
+            background-size: cover;
+            background-position: center;
+        }
+    
+        .login-form input[type="submit"]:hover {
+            background: #dd4e11;
+        }
+
+        .form-bottom {
+            display: flex;
+            justify-content: space-between;
+        }
+    
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+    
+            .login-form {
+                width: 100%;
+                height: auto;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="login-form">
+            <img class="form-img" src="{% static 'images/logo1.png' %}" alt="Logo" width="150" height="150">
+            <h2>Sign in</h2>
+            <form method="POST" action="{% url 'login' %}">
+                {% csrf_token %}
+                <label for=""> Email Or Username
+                    <input type="text" name="username" placeholder="Enter your Email or Username" required><br>
+                </label><br>
+                <label for=""> Password
+                    <input type="password" name="password" placeholder="Enter your password" required><br>
+                </label><br>
+                <div class="form-bottom">
+                    <label>
+                        <input type="checkbox" name="remember_me"> Remember Me 
+                    </label>
+                    <label>
+                        <a href="">Forgot Password?</a>
+                    </label>
+                </div><br>
+                    <label for="">
+                    <input type="submit" value="Sign in"><br>
+                </label><br>
+                <label>
+                    New to EagleSoftware? <a href="{% url 'signup' %}">Create an account</a>
+                </label>
+            </form>
+        </div>
+        <div class="login-image"></div>
     </div>
 </body>
+
 </html>

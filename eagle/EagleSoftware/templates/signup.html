@@ -1,4 +1,3 @@
-<!-- signup.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,35 +6,113 @@
     <title>Sign Up</title>
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+    
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+    
+        .signup-form {
+            width: 50%;
+            margin: 50px;
+            /* text-align: center; */
+        }
+    
+        .signup-form h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+    
+        /* .signup-form form {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        } */
+    
+        .signup-form input[type="text"],
+        .signup-form input[type="email"],
+        .signup-form input[type="password"] {
+            width: 100%;
+            padding: 25px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            /* text-align: center; */
+        }
+    
+        .signup-form input[type="submit"] {
+            width: 100%;
+            background: #F26226;
+            color: #fff;
+            padding: 18px;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            margin-top: 20px;
+            
+        }
+    
+        .signup-form input[type="submit"]:hover {
+            background: #dd4e11;
+        }
+    
+        .signup-image {
+            width: 50%;
+            height: 100vh;
+            background: url("{% static 'images/signup-img.jpg' %}");
+            background-size: cover;
+            background-position: center;
+        }
+    
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+    
+            .signup-form, .signup-image {
+                width: 100%;
+                height: auto;
+            }
+        }
+    </style>
 </head>
-<body>
-    <div class="signup-container">
-        <form class="signup-form" method="post" action="{% url 'signup' %}">
-            {% csrf_token %}
-            <img class="form-img" src="{% static 'images/logo.png' %}" alt="Logo" width="100" height="100">
-            <h2>Sign Up</h2>
-            <div class="form-group">
-                {{ form.username.label_tag }}
-                {{ form.username }}
-            </div>
-            <div class="form-group">
-                {{ form.email.label_tag }}
-                {{ form.email }}
-            </div>
-            <div class="form-group">
-                {{ form.password1.label_tag }}
-                {{ form.password1 }}
-            </div>
-            <div class="form-group">
-                {{ form.password2.label_tag }}
-                {{ form.password2 }}
-            </div>
-            <button type="submit" class="btn-signup">Sign Up</button>
-            {% if error_message %}
-            <p>{{ error_message }}</p>
-            {% endif %}
-        </form>
 
+<body>
+    <div class="container">
+        <div class="signup-form">
+            <img class="form-img" src="{% static 'images/logo1.png' %}" alt="Logo" width="150" height="150">
+            <h2>Sign up</h2>
+            <form method="POST" action="{% url 'signup' %}">
+                {% csrf_token %}
+                <label>  Username 
+                    <input type="text" name="username" placeholder="Enter the Username" required value=""> <br>
+                </label><br>
+                <label> Email
+                    <input type="email" name="email" placeholder="Enter your email" required value=""> <br>
+                </label><br>
+                <label> Password
+                    <input type="password" name="password" placeholder="Enter the password" required value=""> <br>
+                </label><br>
+                <!-- <label> Confirm Password
+                    <input type="password" name="password1" placeholder="Confirm the password" required value="pass"> 
+                </label> -->
+                Already have an account? <a style = "text-align: left;" href="{% url 'login' %}">Sign in</a><br>
+                <input type="submit" value="Sign up">
+            </form>
+        </div>
+        <div class="signup-image"></div>
     </div>
 </body>
 </html>
